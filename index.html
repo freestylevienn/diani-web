@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kings Holiday Homes - Diani Beach Accommodation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-section {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .property-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: scale(1.03);
+        }
+        
+        .wave-animation {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+        
+        .wave-animation svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 100px;
+        }
+        
+        .wave-animation .shape-fill {
+            fill: #FFFFFF;
+        }
+        
+        .amenity-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .amenity-icon:hover {
+            transform: scale(1.1);
+            color: #3b82f6;
+        }
+        
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: scale(1.2);
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #3b82f6;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2563eb;
+        }
+
+        /* Animation classes */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .animate-fadeIn {
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        /* Active filter button */
+        .filter-active {
+            background-color: #3b82f6 !important;
+            color: white !important;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-md z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-blue-500 font-bold text-2xl">Kings Holiday Homes</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-8">
+                        <a href="#home" class="text-gray-700 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                        <a href="#about" class="text-gray-700 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">About Us</a>
+                        <a href="#properties" class="text-gray-700 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Properties</a>
+                        <a href="#amenities" class="text-gray-700 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Amenities</a>
+                        <a href="#explore" class="text-gray-700 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Explore Diani</a>
+                        <a href="#contact" class="text-gray-700 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                        <a href="https://wa.me/254723443180" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300">
+                            <i class="fab fa-whatsapp mr-1"></i> Book Now
+                        </a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-gray-700 hover:text-blue-500 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500 hover:bg-gray-50">Home</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500 hover:bg-gray-50">About Us</a>
+                <a href="#properties" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500 hover:bg-gray-50">Properties</a>
+                <a href="#amenities" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500 hover:bg-gray-50">Amenities</a>
+                <a href="#explore" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500 hover:bg-gray-50">Explore Diani</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500 hover:bg-gray-50">Contact</a>
+                <a href="https://wa.me/254723443180" class="block bg-blue-500 text-white px-4 py-2 rounded-md text-base font-medium mt-2 text-center">
+                    <i class="fab fa-whatsapp mr-1"></i> Book Now
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section h-screen flex items-center justify-center text-white relative pt-20">
+        <div class="text-center px-4">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-fadeIn">Welcome to Kings Holiday Homes</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">Your Coastal Escape in Diani Beach, Kenya</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#properties" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-md font-medium transition duration-300 transform hover:scale-105">
+                    View Properties
+                </a>
+                <a href="tel:+254723443180" class="bg-white hover:bg-gray-100 text-blue-500 px-6 py-3 rounded-md font-medium transition duration-300 transform hover:scale-105">
+                    <i class="fas fa-phone mr-2"></i> Call Now
+                </a>
+            </div>
+        </div>
+        <div class="wave-animation">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">About Us</h2>
+                <div class="w-20 h-1 bg-blue-500 mx-auto"></div>
+            </div>
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Kings Holiday Homes" class="rounded-lg shadow-xl w-full h-auto">
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Experience Coastal Living at Its Finest</h3>
+                    <p class="text-gray-600 mb-6">
+                        At <span class="font-bold text-blue-500">Kings Holiday Homes</span>, we offer quality short and long-term stays on Kenya's beautiful South Coast. Located in the heart of Diani, our homes are ideal for travelers, families, and professionals seeking peace, comfort, and proximity to the beach.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-6 w-6 rounded-full bg-blue-100 text-blue-500">
+                                    <i class="fas fa-check text-xs"></i>
+                                </div>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-gray-600">Locally owned and operated with personalized customer care</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-6 w-6 rounded-full bg-blue-100 text-blue-500">
+                                    <i class="fas fa-check text-xs"></i>
+                                </div>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-gray-600">Beautiful homes with authentic coastal charm</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-6 w-6 rounded-full bg-blue-100 text-blue-500">
+                                    <i class="fas fa-check text-xs"></i>
+                                </div>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-gray-600">Prime location just minutes from Diani's famous beaches</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Properties Section -->
+    <section id="properties" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Properties</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Find your perfect coastal retreat in Diani Beach</p>
+                <div class="w-20 h-1 bg-blue-500 mx-auto mt-4"></div>
+            </div>
+            
+            <!-- Property Filter -->
+            <div class="flex flex-wrap justify-center gap-2 mb-12">
+                <button class="property-filter px-4 py-2 rounded-full bg-blue-500 text-white filter-active" data-filter="all">All Properties</button>
+                <button class="property-filter px-4 py-2 rounded-full bg-white text-gray-700 border border-gray-300 hover:bg-gray-100" data-filter="studio">Studios</button>
+                <button class="property-filter px-4 py-2 rounded-full bg-white text-gray-700 border border-gray-300 hover:bg-gray-100" data-filter="1-bedroom">1-Bedroom</button>
+                <button class="property-filter px-4 py-2 rounded-full bg-white text-gray-700 border border-gray-300 hover:bg-gray-100" data-filter="2-bedroom">2-Bedroom</button>
+                <button class="property-filter px-4 py-2 rounded-full bg-white text-gray-700 border border-gray-300 hover:bg-gray-100" data-filter="villa">Villas</button>
+            </div>
+            
+            <!-- Property Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Property 1 -->
+                <div class="property-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-category="studio">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Studio Apartment" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-medium">
+                            Studio
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Coastal Studio Retreat</h3>
+                        <p class="text-gray-600 mb-4">Perfect for solo travelers or couples, this studio offers all the comforts you need with a beachy vibe.</p>
+                        <div class="flex items-center text-gray-600 mb-4">
+                            <i class="fas fa-map-marker-alt mr-2 text-blue-500"></i>
+                            <span>Diani Beach Road, 500m from beach</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div class="text-blue-500 font-bold text-lg">KSh 12,000 <span class="text-gray-500 text-sm font-normal">/night</span></div>
+                            <a href="https://wa.me/254723443180?text=I'm%20interested%20in%20the%20Coastal%20Studio%20Retreat" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300">
+                                Book Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Property 2 -->
+                <div class="property-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-category="1-bedroom">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="1-Bedroom Apartment" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-medium">
+                            1-Bedroom
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Beachside One-Bedroom</h3>
+                        <p class="text-gray-600 mb-4">Spacious one-bedroom apartment with a balcony overlooking the lush tropical gardens.</p>
+                        <div class="flex items-center text-gray-600 mb-4">
+                            <i class="fas fa-map-marker-alt mr-2 text-blue-500"></i>
+                            <span>Diani Beach, 200m from beach</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div class="text-blue-500 font-bold text-lg">KSh 17,000 <span class="text-gray-500 text-sm font-normal">/night</span></div>
+                            <a href="https://wa.me/254723443180?text=I'm%20interested%20in%20the%20Beachside%20One-Bedroom" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300">
+                                Book Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Property 3 -->
+                <div class="property-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-category="2-bedroom">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="2-Bedroom Apartment" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-medium">
+                            2-Bedroom
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Family Beach Villa</h3>
+                        <p class="text-gray-600 mb-4">Perfect for families or groups, this two-bedroom villa features a full kitchen and private patio.</p>
+                        <div class="flex items-center text-gray-600 mb-4">
+                            <i class="fas fa-map-marker-alt mr-2 text-blue-500"></i>
+                            <span>Diani Beach, beachfront</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div class="text-blue-500 font-bold text-lg">KSh 25,000 <span class="text-gray-500 text-sm font-normal">/night</span></div>
+                            <a href="https://wa.me/254723443180?text=I'm%20interested%20in%20the%20Family%20Beach%20Villa" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300">
+                                Book Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Property 4 -->
+                <div class="property-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-category="villa">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Luxury Villa" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-medium">
+                            Villa
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Ocean View Luxury Villa</h3>
+                        <p class="text-gray-600 mb-4">Stunning 3-bedroom villa with private pool, ocean views, and direct beach access.</p>
+                        <div class="flex items-center text-gray-600 mb-4">
+                            <i class="fas fa-map-marker-alt mr-2 text-blue-500"></i>
+                            <span>Diani Beach, beachfront</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div class="text-blue-500 font-bold text-lg">KSh 50,000 <span class="text-gray-500 text-sm font-normal">/night</span></div>
+                            <a href="https://wa.me/254723443180?text=I'm%20interested%20in%20the%20Ocean%20View%20Luxury%20Villa" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300">
+                                Book Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Property 5 -->
+                <div class="property-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-category="1-bedroom">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="1-Bedroom Apartment" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-medium">
+                            1-Bedroom
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Garden View Apartment</h3>
+                        <p class="text-gray-600 mb-4">Charming one-bedroom apartment surrounded by tropical gardens, just a short walk to the beach.</p>
+                        <div class="flex items-center text-gray-600 mb-4">
+                            <i class="fas fa-map-marker-alt mr-2 text-blue-500"></i>
+                            <span>Diani Beach, 300m from beach</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div class="text-blue-500 font-bold text-lg">KSh 15,500 <span class="text-gray-500 text-sm font-normal">/night</span></div>
+                            <a href="https://wa.me/254723443180?text=I'm%20interested%20in%20the%20Garden%20View%20Apartment" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300">
+                                Book Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Property 6 -->
+                <div class="property-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-category="studio">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80" alt="Studio Apartment" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-medium">
+                            Studio
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Tropical Studio</h3>
+                        <p class="text-gray-600 mb-4">Bright and airy studio with modern amenities, perfect for budget-conscious travelers.</p>
+                        <div class="flex items-center text-gray-600 mb-4">
+                            <i class="fas fa-map-marker-alt mr-2 text-blue-500"></i>
+                            <span>Diani Beach, 400m from beach</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div class="text-blue-500 font-bold text-lg">KSh 10,500 <span class="text-gray-500 text-sm font-normal">/night</span></div>
+                            <a href="https://wa.me/254723443180?text=I'm%20interested%20in%20the%20Tropical%20Studio" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300">
+                                Book Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="https://wa.me/254723443180" class="inline-flex items-center bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-md font-medium transition duration-300">
+                    <i class="fab fa-whatsapp mr-2"></i> Contact Us for More Options
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities Section -->
+    <section id="amenities" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Amenities</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Enjoy top-notch facilities during your stay</p>
+                <div class="w-20 h-1 bg-blue-500 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
+                <!-- Amenity 1 -->
+                <div class="text-center">
+                    <div class="amenity-icon bg-blue-100 w-20 h-20 mx-auto rounded-full flex items-center justify-center text-blue-500 text-3xl mb-4">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-800">High-Speed WiFi</h3>
+                </div>
+                
+                <!-- Amenity 2 -->
+                <div class="text-center">
+                    <div class="amenity-icon bg-blue-100 w-20 h-20 mx-auto rounded-full flex items-center justify-center text-blue-500 text-3xl mb-4">
+                        <i class="fas fa-swimming-pool"></i>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-800">Swimming Pool</h3>
+                </div>
+                
+                <!-- Amenity 3 -->
+                <div class="text-center">
+                    <div class="amenity-icon bg-blue-100 w-20 h-20 mx-auto rounded-full flex items-center justify-center text-blue-500 text-3xl mb-4">
+                        <i class="fas fa-umbrella-beach"></i>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-800">Beach Access</h3>
+                </div>
+                
+                <!-- Amenity 4 -->
+                <div class="text-center">
+                    <div class="amenity-icon bg-blue-100 w-20 h-20 mx-auto rounded-full flex items-center justify-center text-blue-500 text-3xl mb-4">
+                        <i class="fas fa-parking"></i>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-800">Free Parking</h3>
+                </div>
+                
+                <!-- Amenity 5 -->
+                <div class="text-center">
+                    <div class="amenity-icon bg-blue-100 w-20 h-20 mx-auto rounded-full flex items-center justify-center text-blue-500 text-3xl mb-4">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-800">Fully Equipped Kitchen</h3>
+                </div>
+                
+                <!-- Amenity 6 -->
+                <div class="text-center">
+                    <div class="amenity-icon bg-blue-100 w-20 h-20 mx-auto rounded-full flex items-center justify-center text-blue-500 text-3xl mb-4">
+                        <i class="fas fa-tv"></i>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-800">Smart TV</h3>
+                </div>
+                
+                <!-- Amenity 7 -->
+                <div class="text-center">
+                    <div class="amenity-icon bg-blue-100 w-20 h-20 mx-auto rounded-full flex items-center justify-center text-blue-500 text-3xl mb-4">
+                        <i class="fas fa-air-conditioner"></i>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-800">Air Conditioning</h3>
+                </div>
+                
+                <!-- Amenity 8 -->
+                <div class="text-center">
+                    <div class="amenity-icon bg-blue-100 w-20 h-20 mx-auto rounded-full flex items-center justify-center text-blue-500 text-3xl mb-4">
+                        <i class="fas fa-concierge-bell"></i>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-800">24/7 Security</h3>
+                </div>
+                
+                <!-- Amenity 9 -->
+                <div class="text-center">
+                    <div class="amenity-icon bg-blue-100 w-20 h-20 mx-auto rounded-full flex items-center justify-center text-blue-500 text-3xl mb-4">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-800">Hot Water</h3>
+                </div>
+                
+                <!-- Amenity 10 -->
+                <div class="text-center">
+                    <div class="amenity-icon bg-blue-100 w-20 h-20 mx-auto rounded-full flex items-center justify-center text-blue-500 text-3xl mb-4">
+                        <i class="fas fa-broom"></i>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-800">Housekeeping</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">What Our Guests Say</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Hear from travelers who've experienced Kings Holiday Homes</p>
+                <div class="w-20 h-1 bg-blue-500 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img class="h-12 w-12 rounded-full" src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah J.">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-medium text-gray-800">Sarah J.</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "Absolutely loved our stay at Kings Holiday Homes! The studio was perfect for our needs, clean and well-equipped. The location was ideal - close enough to the beach but away from the noise. Will definitely be back!"
+                    </p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img class="h-12 w-12 rounded-full" src="https://randomuser.me/api/portraits/men/45.jpg" alt="Michael T.">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-medium text-gray-800">Michael T.</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "The 2-bedroom villa was perfect for our family vacation. Spacious, clean, and with all the amenities we needed. The kids loved the pool and being so close to the beach. The staff were incredibly helpful too!"
+                    </p>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img class="h-12 w-12 rounded-full" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Amina K.">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-medium text-gray-800">Amina K.</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "As a local looking for a weekend getaway, I was impressed by the quality and value of Kings Holiday Homes. The one-bedroom apartment had everything I needed, and the gardens were beautiful. Highly recommend!"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Explore Diani Section -->
+    <section id="explore" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Explore Diani Beach</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Discover the beauty and activities of Kenya's premier beach destination</p>
+                <div class="w-20 h-1 bg-blue-500 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Activity 1 -->
+                <div class="relative rounded-lg overflow-hidden h-64">
+                    <img src="https://images.unsplash.com/photo-1573790387438-4da905039392?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2066&q=80" alt="Diani Beach" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
+                    <div class="absolute bottom-0 left-0 p-6 text-white">
+                        <h3 class="text-xl font-bold mb-2">Diani Beach</h3>
+                        <p class="text-sm">Voted one of Africa's best beaches with powdery white sand and turquoise waters.</p>
+                    </div>
+                </div>
+                
+                <!-- Activity 2 -->
+                <div class="relative rounded-lg overflow-hidden h-64">
+                    <img src="https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Water Sports" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
+                    <div class="absolute bottom-0 left-0 p-6 text-white">
+                        <h3 class="text-xl font-bold mb-2">Water Sports</h3>
+                        <p class="text-sm">Kitesurfing, snorkeling, scuba diving, and more in the warm Indian Ocean.</p>
+                    </div>
+                </div>
+                
+                <!-- Activity 3 -->
+                <div class="relative rounded-lg overflow-hidden h-64">
+                    <img src="https://images.unsplash.com/photo-1582731594637-1aaf56198001?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Colobus Conservation" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
+                    <div class="absolute bottom-0 left-0 p-6 text-white">
+                        <h3 class="text-xl font-bold mb-2">Colobus Conservation</h3>
+                        <p class="text-sm">Visit this sanctuary dedicated to protecting Kenya's endangered colobus monkeys.</p>
+                    </div>
+                </div>
+                
+                <!-- Activity 4 -->
+                <div class="relative rounded-lg overflow-hidden h-64">
+                    <img src="https://images.unsplash.com/photo-1604537529428-15bcbeecfe4d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Shimba Hills" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
+                    <div class="absolute bottom-0 left-0 p-6 text-white">
+                        <h3 class="text-xl font-bold mb-2">Shimba Hills</h3>
+                        <p class="text-sm">Day trip to this national reserve for wildlife viewing and stunning waterfalls.</p>
+                    </div>
+                </div>
+                
+                <!-- Activity 5 -->
+                <div class="relative rounded-lg overflow-hidden h-64">
+                    <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Local Cuisine" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
+                    <div class="absolute bottom-0 left-0 p-6 text-white">
+                        <h3 class="text-xl font-bold mb-2">Local Cuisine</h3>
+                        <p class="text-sm">Enjoy fresh seafood and Swahili dishes at beachfront restaurants.</p>
+                    </div>
+                </div>
+                
+                <!-- Activity 6 -->
+                <div class="relative rounded-lg overflow-hidden h-64">
+                    <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Nightlife" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
+                    <div class="absolute bottom-0 left-0 p-6 text-white">
+                        <h3 class="text-xl font-bold mb-2">Nightlife</h3>
+                        <p class="text-sm">Beach bars and clubs offering live music and cocktails under the stars.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Contact Us</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Get in touch to book your stay or ask any questions</p>
+                <div class="w-20 h-1 bg-blue-500 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-1/2">
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Your Message</label>
+                            <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-md font-medium transition duration-300">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <div class="bg-white p-8 rounded-lg shadow-md h-full">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-6">Contact Information</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <div class="flex items-center justify-center h-10 w-10 rounded-full bg-blue-100 text-blue-500">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-lg font-medium text-gray-800">Address</h4>
+                                    <p class="text-gray-600">Diani Beach Road, Ukunda, Kenya</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <div class="flex items-center justify-center h-10 w-10 rounded-full bg-blue-100 text-blue-500">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </div>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-lg font-medium text-gray-800">Phone</h4>
+                                    <p class="text-gray-600">+254 723 443 180</p>
+                                    <p class="text-gray-600">+254 700 000 000</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <div class="flex items-center justify-center h-10 w-10 rounded-full bg-blue-100 text-blue-500">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-lg font-medium text-gray-800">Email</h4>
+                                    <p class="text-gray-600">bookings@kingsholidayhomes.com</p>
+                                    <p class="text-gray-600">info@kingsholidayhomes.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <div class="flex items-center justify-center h-10 w-10 rounded-full bg-blue-100 text-blue-500">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </div>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-lg font-medium text-gray-800">WhatsApp</h4>
+                                    <a href="https://wa.me/254723443180" class="text-blue-500 hover:text-blue-600">+254 723 443 180</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="text-lg font-medium text-gray-800 mb-4">Follow Us</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="social-icon text-gray-600 hover:text-blue-500 text-xl">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="social-icon text-gray-600 hover:text-blue-500 text-xl">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="social-icon text-gray-600 hover:text-blue-500 text-xl">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="social-icon text-gray-600 hover:text-blue-500 text-xl">
+                                    <i class="fab fa-tripadvisor"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <div class="h-96 w-full">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.071323188061!2d39.56981481475872!3d-4.292879997032298!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x184046e3f7e9d7f5%3A0x3f0e2e5e5e5e5e5e!2sDiani%20Beach!5e0!3m2!1sen!2ske!4v1620000000000!5m2!1sen!2ske" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Kings Holiday Homes</h3>
+                    <p class="text-gray-400">Quality short and long-term stays in Diani Beach, Kenya's premier coastal destination.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition duration-300">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition duration-300">About Us</a></li>
+                        <li><a href="#properties" class="text-gray-400 hover:text-white transition duration-300">Properties</a></li>
+                        <li><a href="#amenities" class="text-gray-400 hover:text-white transition duration-300">Amenities</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-2 text-blue-400"></i>
+                            <span>Diani Beach Road, Ukunda, Kenya</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-2 text-blue-400"></i>
+                            <span>+254 723 443 180</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-blue-400"></i>
+                            <span>bookings@kingsholidayhomes.com</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Subscribe to get updates on special offers.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 w-full rounded-l-md focus:outline-none text-gray-800">
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-r-md">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2023 Kings Holiday Homes. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-tripadvisor"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/254723443180" class="fixed bottom-8 right-8 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 z-50">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-24 right-8 bg-blue-500 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white p-8 rounded-lg max-w-md w-full mx-4 text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-check text-green-500 text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Message Sent!</h3>
+            <p class="text-gray-600 mb-6">Thank you for contacting Kings Holiday Homes. We'll get back to you shortly.</p>
+            <button id="close-modal" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-md font-medium transition duration-300">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileLinks = document.querySelectorAll('#mobile-menu a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Property filter functionality
+        const filterButtons = document.querySelectorAll('.property-filter');
+        const propertyCards = document.querySelectorAll('.property-card');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('filter-active', 'bg-blue-500', 'text-white'));
+                filterButtons.forEach(btn => btn.classList.add('bg-white', 'text-gray-700', 'border', 'border-gray-300'));
+                
+                // Add active class to clicked button
+                button.classList.add('filter-active', 'bg-blue-500', 'text-white');
+                button.classList.remove('bg-white', 'text-gray-700', 'border', 'border-gray-300');
+                
+                const filterValue = button.getAttribute('data-filter');
+                
+                propertyCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // WhatsApp button hover effect
+        const whatsappButton = document.querySelector('a[href^="https://wa.me"]');
+        if (whatsappButton) {
+            whatsappButton.addEventListener('mouseenter', () => {
+                whatsappButton.classList.add('animate-bounce');
+            });
+            whatsappButton.addEventListener('mouseleave', () => {
+                whatsappButton.classList.remove('animate-bounce');
+            });
+        }
+        
+        // Contact form submission
+        const contactForm = document.getElementById('contact-form');
+        const successModal = document.getElementById('success-modal');
+        const closeModal = document.getElementById('close-modal');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Here you would typically send the form data to a server
+            // For demo purposes, we'll just show the success modal
+            successModal.classList.remove('hidden');
+            
+            // Reset form
+            contactForm.reset();
+        });
+        
+        closeModal.addEventListener('click', () => {
+            successModal.classList.add('hidden');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80, // Adjust for fixed header
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add animation to elements when they come into view
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.property-card, .testimonial-card, .amenity-icon');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Set initial state for animated elements
+        document.querySelectorAll('.property-card, .testimonial-card, .amenity-icon').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
